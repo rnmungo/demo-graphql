@@ -1,0 +1,43 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+type GroupType {
+  id: ID!
+  name: String!
+}
+
+type Group {
+  id: ID!
+  name: String!
+  description: String!
+  group_type: GroupType!
+}
+
+type Item {
+  value: String!
+  group: Group!
+}
+
+type Query {
+  groupTypes: [GroupType!]!
+  groups: [Group!]!
+  items: [Item!]!
+}
+
+input NewGroup {
+  name: String!
+  description: String!
+  group_type_id: ID!
+}
+
+input NewItem {
+  value: String!
+  group_id: ID!
+}
+
+type Mutation {
+  createGroup(input: NewGroup!): Group!
+  createItems(input: [NewItem!]!)
+  removeItems(input: [NewItem!]!)
+}
