@@ -3,6 +3,7 @@ package main
 import (
 	"DemoGraphQL/graph"
 	"DemoGraphQL/graph/generated"
+	"DemoGraphQL/graph/model"
 	"log"
 	"net/http"
 	"os"
@@ -19,7 +20,9 @@ func main() {
 		port = defaultPort
 	}
 
-	srv := handler.NewDefaultServer(generated.NewExecutableSchema(generated.Config{Resolvers: &graph.Resolver{}}))
+	srv := handler.NewDefaultServer(generated.NewExecutableSchema(generated.Config{Resolvers: &graph.Resolver{
+		GroupsStore: map[string]*model.Group{},
+	}}))
 
 	http.Handle("/", playground.Handler("GraphQL playground", "/query"))
 	http.Handle("/query", srv)

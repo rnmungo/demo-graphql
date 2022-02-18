@@ -38,6 +38,6 @@ input NewItem {
 
 type Mutation {
   createGroup(input: NewGroup!): Group!
-  createItems(input: [NewItem!]!)
-  removeItems(input: [NewItem!]!)
+  createItem(input: [NewItem!]!): Item!
+  removeItem(input: [NewItem!]!): Int
 }

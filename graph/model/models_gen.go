@@ -2,30 +2,30 @@
 
 package model
 
-type NewGroup struct {
-	Name        string `json:"name"`
-	Description string `json:"description"`
-	GroupTypeID int64  `json:"group_type_id"`
-}
-
-type NewItem struct {
-	Value   string `json:"value"`
-	GroupID int64  `json:"group_id"`
+type Group struct {
+	ID          string     `json:"id"`
+	Name        string     `json:"name"`
+	Description string     `json:"description"`
+	GroupType   *GroupType `json:"group_type"`
 }
 
 type GroupType struct {
-	ID   int64  `json:"id"`
+	ID   string `json:"id"`
 	Name string `json:"name"`
-}
-
-type Group struct {
-	ID          int64     `json:"id"`
-	Name        string    `json:"name"`
-	Description string    `json:"description"`
-	GroupType   GroupType `json:"group_type"`
 }
 
 type Item struct {
 	Value string `json:"value"`
-	Group Group  `json:"group"`
+	Group *Group `json:"group"`
+}
+
+type NewGroup struct {
+	Name        string `json:"name"`
+	Description string `json:"description"`
+	GroupTypeID string `json:"group_type_id"`
+}
+
+type NewItem struct {
+	Value   string `json:"value"`
+	GroupID string `json:"group_id"`
 }

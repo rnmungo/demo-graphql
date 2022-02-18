@@ -8,6 +8,6 @@ import "DemoGraphQL/graph/model"
 // It serves as dependency injection for your app, add any dependencies you require here.
 
 type Resolver struct {
-	groups map[int64]model.Group
-	items  []model.Item
+	GroupsStore map[string]*model.Group
+	itemsStore  []*model.Item
 }
